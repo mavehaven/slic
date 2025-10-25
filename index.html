@@ -702,7 +702,7 @@
             opacity: 0.7;
         }
         
-        /* Modal */
+        /* Modal - IMPROVED FOR RESPONSIVENESS */
         .modal {
             display: none;
             position: fixed;
@@ -710,12 +710,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            padding: 1rem;
+            box-sizing: border-box;
         }
         
         .modal.active {
@@ -724,12 +726,17 @@
         
         .modal-content {
             background-color: var(--white);
-            width: 90%;
-            max-width: 1000px;
+            width: 100%;
+            max-width: 1200px;
+            max-height: 95vh;
             position: relative;
             transform: translateY(20px);
             transition: transform 0.3s ease;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 8px;
         }
         
         .modal.active .modal-content {
@@ -745,25 +752,29 @@
             z-index: 10;
             color: var(--dark-grey);
             transition: var(--transition);
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .modal-close:hover {
             background-color: var(--red);
             color: var(--white);
+            transform: scale(1.1);
         }
         
         .modal-image-container {
             position: relative;
-            height: 500px;
+            height: 60vh;
+            min-height: 400px;
             overflow: hidden;
             cursor: grab;
+            flex-shrink: 0;
         }
         
         .modal-image-container.grabbing {
@@ -789,7 +800,7 @@
             background-size: cover;
             background-position: center;
             cursor: pointer;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.3s ease-out;
         }
         
         .modal-carousel-slide.active {
@@ -798,7 +809,7 @@
         
         .modal-carousel-slide.zoomed {
             cursor: grab;
-            transform: scale(2);
+            transform: scale(2) !important;
             background-size: contain;
             background-repeat: no-repeat;
             background-color: #f8f8f8;
@@ -820,8 +831,8 @@
         }
         
         .modal-carousel-indicator {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
@@ -834,10 +845,12 @@
         }
         
         .modal-details {
-            padding: 3rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            overflow-y: auto;
+            flex: 1;
         }
         
         .modal-title {
@@ -847,7 +860,7 @@
         
         .modal-price {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--red);
             font-weight: 600;
         }
@@ -856,10 +869,11 @@
             margin-bottom: 2rem;
             color: #666;
             font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         .option-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .option-title {
@@ -868,6 +882,7 @@
             margin-bottom: 0.5rem;
             letter-spacing: 1px;
             font-weight: 600;
+            color: var(--dark-grey);
         }
         
         .color-options, .size-options {
@@ -881,7 +896,7 @@
             height: 30px;
             border-radius: 50%;
             cursor: pointer;
-            border: 1px solid #ddd;
+            border: 2px solid transparent;
             transition: var(--transition);
         }
         
@@ -897,6 +912,7 @@
             text-transform: uppercase;
             font-size: 0.8rem;
             transition: var(--transition);
+            border-radius: 4px;
         }
         
         .size-option.active {
@@ -950,6 +966,7 @@
             margin-top: 1rem;
             font-weight: 600;
             transition: var(--transition);
+            border-radius: 4px;
         }
         
         .add-to-cart:hover {
@@ -958,7 +975,7 @@
             box-shadow: 0 5px 15px rgba(192, 10, 39, 0.3);
         }
         
-        /* Zoom Controls */
+        /* Zoom Controls - IMPROVED */
         .zoom-controls {
             position: absolute;
             top: 15px;
@@ -966,6 +983,10 @@
             z-index: 5;
             display: flex;
             gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .zoom-btn {
@@ -974,17 +995,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: var(--white);
             border-radius: 50%;
             cursor: pointer;
             transition: var(--transition);
             color: var(--dark-grey);
             font-size: 1.2rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
         }
         
         .zoom-btn:hover {
-            background-color: var(--white);
+            background-color: var(--red);
+            color: var(--white);
             transform: scale(1.1);
         }
         
@@ -1473,6 +1496,94 @@
             color: var(--red);
         }
         
+        /* FULL SCREEN MODAL STYLES */
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .fullscreen-modal.active {
+            opacity: 1;
+        }
+        
+        .fullscreen-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .fullscreen-image {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+        }
+        
+        .fullscreen-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+            color: var(--white);
+            transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .fullscreen-close:hover {
+            background-color: var(--red);
+            transform: scale(1.1);
+        }
+        
+        .fullscreen-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 5;
+        }
+        
+        .fullscreen-prev, .fullscreen-next {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.5rem;
+        }
+        
+        .fullscreen-prev:hover, .fullscreen-next:hover {
+            background-color: var(--red);
+            transform: scale(1.1);
+        }
+        
         /* Responsive */
         @media (max-width: 1024px) {
             h1 {
@@ -1485,6 +1596,16 @@
             
             .section-title {
                 font-size: 2rem;
+            }
+            
+            /* Improved modal for tablets */
+            .modal-content {
+                max-width: 95%;
+                flex-direction: column;
+            }
+            
+            .modal-image-container {
+                height: 50vh;
             }
         }
         
@@ -1550,14 +1671,46 @@
                 display: block;
             }
             
+            /* IMPROVED MODAL FOR MOBILE */
+            .modal {
+                padding: 0.5rem;
+            }
+            
             .modal-content {
-                width: 95%;
-                max-height: 90vh;
-                overflow-y: auto;
+                width: 100%;
+                max-height: 98vh;
+                max-width: 100%;
+                border-radius: 0;
             }
             
             .modal-image-container {
-                height: 300px;
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .modal-details {
+                padding: 1.5rem;
+                overflow-y: auto;
+                max-height: 50vh;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-price {
+                font-size: 1.3rem;
+            }
+            
+            .zoom-controls {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .zoom-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
             }
             
             .cart-sidebar {
@@ -1641,8 +1794,26 @@
                 gap: 1rem;
             }
             
+            /* IMPROVED MODAL FOR SMALL MOBILE */
+            .modal-image-container {
+                height: 35vh;
+                min-height: 250px;
+            }
+            
             .modal-details {
-                padding: 2rem;
+                padding: 1rem;
+            }
+            
+            .modal-title {
+                font-size: 1.3rem;
+            }
+            
+            .modal-price {
+                font-size: 1.2rem;
+            }
+            
+            .option-group {
+                margin-bottom: 1rem;
             }
             
             .tracksuit-text h3 {
@@ -1670,6 +1841,15 @@
             
             .btn {
                 padding: 8px 16px;
+            }
+            
+            .modal-image-container {
+                height: 30vh;
+                min-height: 200px;
+            }
+            
+            .modal-details {
+                padding: 0.8rem;
             }
         }
     </style>
@@ -1910,6 +2090,9 @@
                     <div class="zoom-btn" id="reset-zoom-btn">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </div>
+                    <div class="zoom-btn" id="fullscreen-btn">
+                        <i class="fas fa-expand"></i>
+                    </div>
                 </div>
                 <div class="modal-carousel" id="modal-carousel">
                     <!-- Modal carousel slides will be added dynamically -->
@@ -1948,6 +2131,24 @@
                 
                 <button class="add-to-cart">Add to Cart</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Full Screen Modal -->
+    <div class="fullscreen-modal" id="fullscreen-modal">
+        <div class="fullscreen-content">
+            <div class="fullscreen-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="fullscreen-nav">
+                <div class="fullscreen-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="fullscreen-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <img class="fullscreen-image" id="fullscreen-image" src="" alt="">
         </div>
     </div>
 
@@ -2179,6 +2380,12 @@
         const zoomInBtn = document.getElementById('zoom-in-btn');
         const zoomOutBtn = document.getElementById('zoom-out-btn');
         const resetZoomBtn = document.getElementById('reset-zoom-btn');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        const fullscreenModal = document.getElementById('fullscreen-modal');
+        const fullscreenImage = document.getElementById('fullscreen-image');
+        const fullscreenClose = document.querySelector('.fullscreen-close');
+        const fullscreenPrev = document.querySelector('.fullscreen-prev');
+        const fullscreenNext = document.querySelector('.fullscreen-next');
 
         // Current product selection
         let currentProduct = null;
@@ -2195,6 +2402,7 @@
         let isDragging = false;
         let startX, startY, scrollLeft, scrollTop;
         let currentSlide = null;
+        let currentFullscreenIndex = 0;
 
         // Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
@@ -2290,10 +2498,30 @@
             // Section animations
             setupScrollAnimations();
 
-            // Zoom controls
+            // Zoom controls - FIXED
             zoomInBtn.addEventListener('click', zoomIn);
             zoomOutBtn.addEventListener('click', zoomOut);
             resetZoomBtn.addEventListener('click', resetZoom);
+            fullscreenBtn.addEventListener('click', openFullscreen);
+
+            // Fullscreen modal controls
+            fullscreenClose.addEventListener('click', closeFullscreen);
+            fullscreenModal.addEventListener('click', function(e) {
+                if (e.target === fullscreenModal) {
+                    closeFullscreen();
+                }
+            });
+            fullscreenPrev.addEventListener('click', prevFullscreenImage);
+            fullscreenNext.addEventListener('click', nextFullscreenImage);
+
+            // Keyboard navigation for fullscreen
+            document.addEventListener('keydown', function(e) {
+                if (fullscreenModal.style.display === 'flex') {
+                    if (e.key === 'Escape') closeFullscreen();
+                    if (e.key === 'ArrowLeft') prevFullscreenImage();
+                    if (e.key === 'ArrowRight') nextFullscreenImage();
+                }
+            });
         });
 
         // Functions
@@ -2485,12 +2713,51 @@
 
         function resetZoom() {
             zoomOut();
-            currentSlide.style.transform = 'translate(0, 0)';
+            if (currentSlide) {
+                currentSlide.style.transform = 'translate(0, 0)';
+            }
+        }
+
+        function openFullscreen() {
+            if (!currentProduct || !currentSlide) return;
+            
+            currentFullscreenIndex = currentModalSlide;
+            fullscreenImage.src = currentProduct.images[currentFullscreenIndex];
+            
+            fullscreenModal.style.display = 'flex';
+            setTimeout(() => {
+                fullscreenModal.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            fullscreenModal.classList.remove('active');
+            setTimeout(() => {
+                fullscreenModal.style.display = 'none';
+                document.body.style.overflow = 'hidden'; // Keep hidden because modal is still open
+            }, 300);
+        }
+
+        function prevFullscreenImage() {
+            if (!currentProduct) return;
+            
+            currentFullscreenIndex = (currentFullscreenIndex - 1 + currentProduct.images.length) % currentProduct.images.length;
+            fullscreenImage.src = currentProduct.images[currentFullscreenIndex];
+        }
+
+        function nextFullscreenImage() {
+            if (!currentProduct) return;
+            
+            currentFullscreenIndex = (currentFullscreenIndex + 1) % currentProduct.images.length;
+            fullscreenImage.src = currentProduct.images[currentFullscreenIndex];
         }
 
         function enableImagePanning() {
             modalImageContainer.classList.add('grabbing');
-            currentSlide.classList.add('grabbing');
+            if (currentSlide) {
+                currentSlide.classList.add('grabbing');
+            }
             
             modalImageContainer.addEventListener('mousedown', startDragging);
             modalImageContainer.addEventListener('mouseup', stopDragging);
@@ -2617,6 +2884,11 @@
             
             // Disable panning
             disableImagePanning();
+            
+            // Close fullscreen if open
+            if (fullscreenModal.style.display === 'flex') {
+                closeFullscreen();
+            }
             
             modal.classList.remove('active');
             setTimeout(() => {
