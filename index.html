@@ -702,7 +702,7 @@
             opacity: 0.7;
         }
         
-        /* Modal - IMPROVED FOR RESPONSIVENESS */
+        /* Modal - WIDER FOR CUSTOMIZATION VISIBILITY */
         .modal {
             display: none;
             position: fixed;
@@ -727,14 +727,14 @@
         .modal-content {
             background-color: var(--white);
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px; /* INCREASED FROM 1200px */
             max-height: 95vh;
             position: relative;
             transform: translateY(20px);
             transition: transform 0.3s ease;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             display: flex;
-            flex-direction: column;
+            flex-direction: row; /* Ensure side-by-side layout */
             overflow: hidden;
             border-radius: 8px;
         }
@@ -770,8 +770,9 @@
         
         .modal-image-container {
             position: relative;
-            height: 60vh;
-            min-height: 400px;
+            width: 60%; /* Increased image area */
+            height: 100%;
+            min-height: 600px;
             overflow: hidden;
             cursor: grab;
             flex-shrink: 0;
@@ -845,12 +846,14 @@
         }
         
         .modal-details {
-            padding: 2rem;
+            padding: 2.5rem; /* Increased padding */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             overflow-y: auto;
             flex: 1;
+            width: 40%; /* Fixed width for details */
+            min-height: 600px;
         }
         
         .modal-title {
@@ -874,6 +877,7 @@
         
         .option-group {
             margin-bottom: 1.5rem;
+            width: 100%;
         }
         
         .option-title {
@@ -887,8 +891,9 @@
         
         .color-options, .size-options {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
+            width: 100%;
         }
         
         .color-option {
@@ -923,8 +928,10 @@
         
         .quantity-selector {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             margin-bottom: 2rem;
+            width: 100%;
         }
         
         .quantity-btn {
@@ -1585,6 +1592,18 @@
         }
         
         /* Responsive */
+        @media (max-width: 1400px) {
+            .modal-content {
+                max-width: 1300px;
+            }
+        }
+        
+        @media (max-width: 1300px) {
+            .modal-content {
+                max-width: 1200px;
+            }
+        }
+        
         @media (max-width: 1024px) {
             h1 {
                 font-size: 3rem;
@@ -1605,7 +1624,15 @@
             }
             
             .modal-image-container {
+                width: 100%;
                 height: 50vh;
+                min-height: 400px;
+            }
+            
+            .modal-details {
+                width: 100%;
+                min-height: auto;
+                padding: 2rem;
             }
         }
         
