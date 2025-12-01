@@ -301,6 +301,87 @@
             margin-bottom: 1.5rem;
         }
         
+        /* NEW: About SLIC Section */
+        .about-slic {
+            padding: 6rem 3rem;
+            background-color: var(--white);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .about-slic.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .about-slic-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-slic h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-slic h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background-color: var(--red);
+        }
+        
+        .about-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            color: var(--dark-grey);
+        }
+        
+        .slic-effect {
+            background-color: var(--off-white);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            text-align: left;
+            position: relative;
+            border-left: 4px solid var(--red);
+        }
+        
+        .slic-effect-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .slic-effect-title::before {
+            content: '✦';
+            font-size: 1.5rem;
+        }
+        
+        .slic-effect-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-grey);
+            font-style: italic;
+        }
+        
+        .highlight {
+            color: var(--red);
+            font-weight: 600;
+        }
+        
         /* Tracksuits Section */
         .tracksuits {
             padding: 6rem 3rem;
@@ -2292,8 +2373,34 @@
             <a href="#subscription" class="btn">Subscribe & Save 15%</a>
         </div>
     </section>
+
+    <!-- NEW: About SLIC Section -->
+    <section class="about-slic" id="about">
+        <div class="about-slic-content">
+            <h2>ABOUT SLIC.</h2>
+            <p class="about-intro">
+                SLIC. is a South African luxury streetwear label where innovation meets impeccable design. 
+                Born from the desire to bridge high fashion and everyday style, each piece fuses premium 
+                fabrics with unparalleled comfort, creating garments that are as functional as they are 
+                aspirational.
+            </p>
+            <p class="about-intro">
+                Our designs are crafted with meticulous attention to detail, from dual-purpose silhouettes 
+                to subtle, life-enhancing features, transforming everyday dressing into an elevated 
+                experience — <span class="highlight">the SLIC. EFFECT</span>.
+            </p>
+            
+            <div class="slic-effect">
+                <div class="slic-effect-title">THE SLIC. EFFECT:</div>
+                <p class="slic-effect-description">
+                    It's not just fashion, it's a frequency. A feeling that moves with you, 
+                    a presence that speaks before you do, a lifestyle defined by precision and confidence.
+                </p>
+            </div>
+        </div>
+    </section>
     
-        <!-- ORIGINAL SLIC APPAREL SECTION - FULLY RESTORED -->
+    <!-- ORIGINAL SLIC APPAREL SECTION - FULLY RESTORED -->
     <section class="slic-apparel" id="collections">
         <h2 class="section-title">COLLECTION</h2>
         <div class="slic-apparel-grid">
@@ -2317,8 +2424,6 @@
             </div>
         </div>
     </section>
-
-    
 
     <!-- T-Shirts Section -->
     <section class="tshirts" id="tshirts">
@@ -2463,10 +2568,10 @@
     <footer>
         <img src="https://b9fe070413d9eb020045866da2feb86e.cdn.bubble.io/f1733773881971x252733914319725380/SLIC%20Logo%20design.svg" alt="SLIC Apparel" class="footer-logo">
         <div class="footer-links">
-            <a href="#">Collections</a>
+            <a href="#collections">Collections</a>
             <a href="#tracksuits">Tracksuits</a>
             <a href="#tshirts">T-Shirts</a>
-            <a href="#slic-apparel">SLIC APPAREL</a>
+            <a href="#about">About SLIC</a>
             <a href="#subscription">Subscribe</a>
             <a href="#contact">Contact</a>
         </div>
@@ -4121,7 +4226,7 @@
         }
 
         function setupScrollAnimations() {
-            const sections = document.querySelectorAll('.tracksuits, .tshirts, .slic-apparel, .subscription, .contact');
+            const sections = document.querySelectorAll('.about-slic, .tracksuits, .tshirts, .slic-apparel, .subscription, .contact');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
